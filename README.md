@@ -8,8 +8,9 @@ We added search transfering for MLP's.
 ## Running search transfer
 To run the search transfer you can run the following command:
 
-main.py --network 'mlp_st' --dataset 'mnist' --input_size 1 28 28 --output_size 10 --num_hidden_layers 0 2 --hidden_nodes 20 400 --numepochs 60 --bo_prior_states 15 --bo_steps 15 --bo_explore 1000 --dataset2 'fmnist' --input_size2 1 28 28 --output_size2 10 --dataset3 'rcv1_2000.npz' --input_size3 2000 --output_size3 50 --wc 0.01
+python3 main.py --network 'mlp_st' --dataset 'mnist' --input_size 1 28 28 --output_size 10 --num_hidden_layers 0 2 --hidden_nodes 20 400 --numepochs 60 --bo_prior_states 15 --bo_steps 15 --bo_explore 1000 --dataset2 'fmnist' --input_size2 1 28 28 --output_size2 10 --dataset3 'rcv1_2000.npz' --input_size3 2000 --output_size3 50 --wc 0.01
 
+This will do a search transfer from mnist to fmnist and rcv1
 
 # deep-n-cheap ![DnC logo](/dnc_logo.png)
 
