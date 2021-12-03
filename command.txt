@@ -1,0 +1,17 @@
+python3 main.py --network 'mlp' --dataset 'fmnist' --input_size 1 28 28 --output_size 10 --numepochs 180 --bo_explore 10 --dl_framework torch
+
+python3 main.py --network 'mlp_st' --dataset 'mnist' --val_split 0.1 --input_size 1 28 28 --output_size 10 --numepochs 1 --bo_prior_states 1 --bo_steps 1 --bo_explore 10 --dl_framework torch --dataset2 'fmnist' --input_size2 1 28 28 --output_size2 10
+
+
+python3 main.py --network 'mlp_st' --dataset 'mnist' --input_size 1 28 28 --output_size 10 \
+                --num_hidden_layers 0 2 --hidden_nodes 20 400 \
+                --numepochs 60 --bo_prior_states 15 --bo_steps 15 --bo_explore 1000 \
+                --dataset2 'fmnist' --input_size2 1 28 28 --output_size2 10 \
+                --dataset3 'rcv1_2000_trans.npz' --input_size3 2000 --output_size3 50
+
+python3 main.py --network 'mlp' --dataset 'rcv1_2000_trans.npz' --val_split 0.5 --input_size 2000 --output_size 100 --wc 0.05 --numepochs 20 --num_hidden_layers 0 2
+
+scp -P 1234 workspace.tar.gz s1830120@localhost:/data/s1830120
+
+
+python3 main.py --network 'mlp_st' --dataset 'mnist' --input_size 1 28 28 --output_size 10 --num_hidden_layers 0 2 --hidden_nodes 20 400 --numepochs 60 --bo_prior_states 15 --bo_steps 15 --bo_explore 1000 --dataset2 'fmnist' --input_size2 1 28 28 --output_size2 10 --dataset3 'rcv1_2000_trans.npz' --input_size3 2000 --output_size3 50 --wc 0

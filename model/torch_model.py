@@ -370,7 +370,7 @@ def run_network(
     else: #using numpy
         loader = False
         xtr,ytr, xva,yva, xte,yte = data
-
+    
 
 # =============================================================================
 #     Define records to collect
@@ -410,6 +410,7 @@ def run_network(
             else:
                 inputs, labels = batch
                 inputs, labels = inputs.to(device), labels.to(device)
+            
             batch_correct, batch_loss = train_batch(x=inputs, y=labels, net=net, lossfunc=lossfunc, opt=opt)
             epoch_correct += batch_correct
             epoch_loss += batch_loss

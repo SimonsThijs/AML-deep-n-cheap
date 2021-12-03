@@ -1,3 +1,16 @@
+# This is a modification of deep-n-cheap
+We added search transfering for MLP's.
+
+## Setup:
+1. Download rcv1_2000.npz from: https://drive.google.com/drive/folders/1fFy-kE_hvjEXAfDcqtcormNljj7YJc2R?usp=sharing
+2. Place the file in the root directory of this repo.
+
+## Running search transfer
+To run the search transfer you can run the following command:
+
+main.py --network 'mlp_st' --dataset 'mnist' --input_size 1 28 28 --output_size 10 --num_hidden_layers 0 2 --hidden_nodes 20 400 --numepochs 60 --bo_prior_states 15 --bo_steps 15 --bo_explore 1000 --dataset2 'fmnist' --input_size2 1 28 28 --output_size2 10 --dataset3 'rcv1_2000.npz' --input_size3 2000 --output_size3 50 --wc 0.01
+
+
 # deep-n-cheap ![DnC logo](/dnc_logo.png)
 
 ## Extended version

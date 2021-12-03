@@ -125,16 +125,32 @@ def get_data_npz(data_folder = './', dataset = 'fmnist.npz', val_split = 1/5, pr
     ytr = loaded['ytr']
     xte = loaded['xte']
     yte = loaded['yte'] 
-    
+    xva = None
+    yva = None
+    has_val_data = False
+    if 'xva' in loaded and 'yva' in loaded:
+        xva = loaded['xva']
+        yva = loaded['yva']
+        has_val_data = True
+
     ## Convert to tensors on device ##
     xtr = torch.as_tensor(xtr, dtype=torch.float, device=device)
     xte = torch.as_tensor(xte, dtype=torch.float, device=device)
+    if has_val_data:
+        xva = torch.as_tensor(xva, dtype=torch.float, device=device)
     if problem_type == 'classification':
         ytr = torch.as_tensor(ytr, dtype=torch.long, device=device)
         yte = torch.as_tensor(yte, dtype=torch.long, device=device)
+        if has_val_data:
+            yva = torch.as_tensor(yva, dtype=torch.long, device=device)
     elif problem_type == 'regression':
         ytr = torch.as_tensor(ytr, dtype=torch.float, device=device)
         yte = torch.as_tensor(yte, dtype=torch.float, device=device)
+        if has_val_data:
+            yva = torch.as_tensor(yva, dtype=torch.float, device=device)
+    
+    if has_val_data:
+        return xtr,ytr, xva,yva, xte,yte
 
     if abs(val_split) < 1e-8:
         # val_spilt is 0.0
